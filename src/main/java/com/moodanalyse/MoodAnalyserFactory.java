@@ -5,14 +5,14 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory
 {
-    public static MoodAnalyser createMoodAnalyse(String message)
+    public static MoodAnalyser createMoodAnalyse(String message) throws MoodAnalysisException
     {
         try {
-            Class<?>moodAnalyseClass=Class.forName("com.moodanalyse.MoodAnalyser");
+            Class<?>moodAnalyseClass=Class.forName("com.moodanalyse.MoodAnalyser12");
             Constructor<?> moodConstructor= null;
             try
             {
-                moodConstructor = moodAnalyseClass.getConstructor();
+                moodConstructor = moodAnalyseClass.getConstructor(String.class);
             }
             catch (NoSuchMethodException e)
             {
@@ -39,9 +39,8 @@ public class MoodAnalyserFactory
         }
         catch (ClassNotFoundException e)
         {
-
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS,"Please enter the proper class name");
         }
-        return null;
     }
 }
 

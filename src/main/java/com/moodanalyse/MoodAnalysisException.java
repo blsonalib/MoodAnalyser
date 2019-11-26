@@ -3,7 +3,7 @@ package com.moodanalyse;
 public class MoodAnalysisException extends Exception
 {
     enum ExceptionType{
-        ENTERED_NULL;
+        ENTERED_NULL,NO_SUCH_CLASS;
     }
     ExceptionType type;
     public MoodAnalysisException(ExceptionType type,String message)

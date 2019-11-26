@@ -80,12 +80,28 @@ public class MoodAnalyseTest
         }
     }
     @Test
-    public void givenMessage_CheckToObjectAreEqual()
-    {
+    public void givenMessage_CheckToObjectAreEqual()  {
         MoodAnalyser moodAnalyser=null;
-        moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in a Happy");
+        try {
+            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in a Happy");
+        } catch (MoodAnalysisException e) {
+
+        }
         boolean Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
         Assert.assertEquals(false,Result);
+    }
+    @Test
+    public void givenMessage_When_Notproper_Should_Return_NoSuchMethod_With_Parameters()
+    {
+        MoodAnalyser moodAnalyser=null;
+        try
+        {
+            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in Happy Mood");
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.assertEquals("Please enter the proper class name",e.getMessage());
+        }
     }
 }
 
