@@ -39,14 +39,10 @@ public class MoodAnalyser
         }
     }
 
-    public boolean equals(Object another)
+    public boolean equals(MoodAnalyser another)
     {
-        if(this.message.equals(((MoodAnalyser)another).message))
-        {
-            System.out.println(this.message.hashCode());
-            System.out.println(((MoodAnalyser)another).message.hashCode());
+        if (this.message == another.message)
             return true;
-        }
         return false;
     }
 

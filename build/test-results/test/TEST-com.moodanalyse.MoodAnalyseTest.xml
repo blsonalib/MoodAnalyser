@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.moodanalyse.MoodAnalyseTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-11-26T10:42:54" hostname="admin1-desktop" time="0.005">
+<testsuite name="com.moodanalyse.MoodAnalyseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-26T11:34:24" hostname="admin1-desktop" time="0.002">
   <properties/>
-  <testcase name="givenMessage_CheckToObjectAreEqual" classname="com.moodanalyse.MoodAnalyseTest" time="0.003"/>
-  <testcase name="givenMessage_NullMood_WhenHappy_ShouldReturned" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_whenthemoodnull_InMoodAnalyseException_shouldReturnHappy" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_WhenSad_ShouldReturned" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="gitvenNullMoodShouldThrowException" classname="com.moodanalyse.MoodAnalyseTest" time="0.001"/>
-  <testcase name="givenMessage_WhenHappy_ShouldReturned" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <system-out><![CDATA[1204968227
-1204968227
-]]></system-out>
+  <testcase name="givenMessage_CheckToObjectAreEqual" classname="com.moodanalyse.MoodAnalyseTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

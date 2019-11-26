@@ -12,7 +12,7 @@ public class MoodAnalyserFactory
             Constructor<?> moodConstructor= null;
             try
             {
-                moodConstructor = moodAnalyseClass.getConstructor(String.class);
+                moodConstructor = moodAnalyseClass.getConstructor();
             }
             catch (NoSuchMethodException e)
             {
@@ -21,7 +21,7 @@ public class MoodAnalyserFactory
             Object moodObj= null;
             try
             {
-                moodObj = moodConstructor.newInstance(message);
+                moodObj = moodConstructor.newInstance();
             }
             catch (InstantiationException e)
             {
@@ -39,7 +39,7 @@ public class MoodAnalyserFactory
         }
         catch (ClassNotFoundException e)
         {
-            e.printStackTrace();
+
         }
         return null;
     }
