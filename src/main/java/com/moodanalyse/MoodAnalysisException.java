@@ -2,7 +2,7 @@ package com.moodanalyse;
 
 public class MoodAnalysisException extends Exception
 {
-    public MoodAnalysisException(String message)
+     public MoodAnalysisException(String message)
     {
         super(message);
     }

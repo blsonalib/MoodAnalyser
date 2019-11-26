@@ -6,12 +6,15 @@ import org.junit.Test;
 public class MoodAnalyseTest
 {
     @Test
-    public void givenMessage_WhenSad_ShouldReturned() {
+    public void givenMessage_WhenSad_ShouldReturned()
+    {
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Sad Mood");
         String mood = null;
-        try {
+        try
+        {
             mood = moodAnalyser.analyseMood();
-        } catch (MoodAnalysisException e) {
+        } catch (MoodAnalysisException e)
+        {
             Assert.assertEquals("SAD",mood);
         }
 
@@ -26,18 +29,23 @@ public class MoodAnalyseTest
         {
             mood = moodAnalyser.analyseMood();
         }
-        catch (MoodAnalysisException e) {
+        catch (MoodAnalysisException e)
+        {
             Assert.assertEquals("HAPPY",mood);
         }
 
     }
     @Test
-    public  void givenMessage_NullMood_WhenHappy_ShouldReturned()  {
+    public  void givenMessage_NullMood_WhenHappy_ShouldReturned()
+    {
         MoodAnalyser moodAnalyser=new MoodAnalyser(null);
         String mood= null;
-        try {
+        try
+        {
             mood = moodAnalyser.analyseMood("Im am in Happy Mood");
-        } catch (MoodAnalysisException e) {
+        }
+        catch (MoodAnalysisException e)
+        {
             Assert.assertEquals("HAPPY",mood);
         }
 
@@ -55,5 +63,4 @@ public class MoodAnalyseTest
             Assert.assertEquals("please enter proper message", e.getMessage());
         }
     }
-
 }
