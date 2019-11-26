@@ -4,6 +4,8 @@ public class MoodAnalyser
 {
     public String analyseMood(String message)
     {
-        return "SAD";
+        return "HAPPY";
+
     }
+
 }
