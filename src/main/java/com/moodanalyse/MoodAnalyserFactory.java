@@ -8,15 +8,15 @@ public class MoodAnalyserFactory
     public static MoodAnalyser createMoodAnalyse(String message) throws MoodAnalysisException
     {
         try {
-            Class<?>moodAnalyseClass=Class.forName("com.moodanalyse.MoodAnalyser12");
+            Class<?>moodAnalyseClass=Class.forName("com.moodanalyse.MoodAnalyser");
             Constructor<?> moodConstructor= null;
             try
             {
-                moodConstructor = moodAnalyseClass.getConstructor(String.class);
+                moodConstructor = moodAnalyseClass.getConstructor(Integer.class);
             }
             catch (NoSuchMethodException e)
             {
-                e.printStackTrace();
+               throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD,"please enter the proper method name");
             }
             Object moodObj= null;
             try

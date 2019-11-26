@@ -91,7 +91,7 @@ public class MoodAnalyseTest
         Assert.assertEquals(false,Result);
     }
     @Test
-    public void givenMessage_When_Notproper_Should_Return_NoSuchMethod_With_Parameters()
+    public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchClass_WithParameters()
     {
         MoodAnalyser moodAnalyser=null;
         try
@@ -101,6 +101,19 @@ public class MoodAnalyseTest
         catch (MoodAnalysisException e)
         {
             Assert.assertEquals("Please enter the proper class name",e.getMessage());
+        }
+    }
+    @Test
+    public void givenMessage_WhenNotproperMethod_ShouldReturn_NoSuchMethod_WithParameters()
+    {
+        MoodAnalyser moodAnalyser=null;
+        try
+        {
+            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in Happy Mood");
+        }
+        catch (MoodAnalysisException e)
+        {
+            Assert.assertEquals("please enter the proper method name",e.getMessage());
         }
     }
 }
