@@ -3,7 +3,11 @@ package com.moodanalyse;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.swing.text.AbstractDocument;
+
 public class MoodAnalyseTest {
+    private AbstractDocument ObjectReflector;
+
     @Test
     public void givenMessage_WhenSad_ShouldReturned() {
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Sad Mood");
@@ -58,6 +62,13 @@ public class MoodAnalyseTest {
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_NULL, e.type);
         }
-
+    }
+    @Test
+    public void givenMessage_CheckToObjectAreEqual()
+    {
+        MoodAnalyser moodAnalyser=null;
+        moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in a Happy");
+        boolean Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
+        Assert.assertEquals(true,Result);
     }
 }

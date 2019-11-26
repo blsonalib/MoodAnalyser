@@ -38,4 +38,17 @@ public class MoodAnalyser
             throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"please enter proper message");
         }
     }
+
+    public boolean equals(Object another)
+    {
+        if(this.message.equals(((MoodAnalyser)another).message))
+        {
+            System.out.println(this.message.hashCode());
+            System.out.println(((MoodAnalyser)another).message.hashCode());
+            return true;
+        }
+        return false;
+    }
+
+
 }
