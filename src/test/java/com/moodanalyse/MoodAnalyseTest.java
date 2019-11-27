@@ -93,6 +93,18 @@ public class MoodAnalyseTest {
     }
 
     @Test
+    public void givenMessage_CheckToObjectAreEqual_WithParameter_ReturnHappyMood() {
+        MoodAnalyser moodAnalyser = null;
+        boolean Result = false;
+        try {
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameter("I am in a Happy");
+            Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(false, Result);
+        }
+    }
+
+    @Test
     public void givenMessage_withReflection_ShouldReturnHappy() {
         Object myObject = null;
         try {
@@ -126,14 +138,5 @@ public class MoodAnalyseTest {
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
-    }
-
-    @Test
-    public void givenHappyMessage1_WithDefaultConstructor_ShouldReturnHappy() {
-        Constructor<?>constructor =MoodAnalyserReflector.getConstructor();
-                Object myObjec=MoodAnalyserReflector.getAnalyseMethod(constructor);
-      //  MoodAnalyserReflector.setFieldValue(myObject, "message", "I am in Happy Mood");
-        Object mood = MoodAnalyserReflector.invokeMethod(myObject, "analyseMood");
-        Assert.assertEquals("HAPPY", mood);
     }
 }
