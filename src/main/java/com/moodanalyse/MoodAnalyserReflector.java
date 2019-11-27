@@ -76,7 +76,7 @@ public class MoodAnalyserReflector
             moodObj = moodConstructor.newInstance(message);
             return (MoodAnalyser) moodObj;
         } catch (ClassNotFoundException | NoSuchMethodException e) {
-            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "Please enter the proper class name");
+            e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
