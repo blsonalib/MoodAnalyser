@@ -2,7 +2,6 @@ package com.moodanalyse;
 
 public class MoodAnalyser
 {
-
     private String message;
     public MoodAnalyser(String message)
     {

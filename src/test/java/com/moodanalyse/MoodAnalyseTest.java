@@ -76,7 +76,7 @@ public class MoodAnalyseTest {
     public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchClass_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyse();
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithInproperClass();
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("Please enter the proper class name", e.getMessage());
         }
@@ -86,12 +86,11 @@ public class MoodAnalyseTest {
     public void givenMessage_WhenNotproperMethod_ShouldReturn_NoSuchMethod_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameter("I am in Happy Mood");
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithImproperMethod();
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("please enter the proper method name", e.getMessage());
         }
     }
-
     @Test
     public void givenMessage_CheckToObjectAreEqual_WithParameter_ReturnHappyMood() {
         MoodAnalyser moodAnalyser = null;
@@ -103,40 +102,16 @@ public class MoodAnalyseTest {
             Assert.assertEquals(false, Result);
         }
     }
-
     @Test
-    public void givenMessage_withReflection_ShouldReturnHappy() {
-        Object myObject = null;
+    public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchMethod_WithParameters() {
+        MoodAnalyser moodAnalyser = null;
         try {
-            myObject = MoodAnalyserReflector.createMoodAnalyseWithParameter("I am in Happy Mood");
-            Object mood = MoodAnalyserReflector.invokeMethod(myObject, "analyseMood");
-            Assert.assertEquals("HAPPY", mood);
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameterWithImproperClassName("I am in a Happy");
         } catch (MoodAnalysisException e) {
-
-            e.printStackTrace();
+            Assert.assertEquals("please enter the proper class name", e.getMessage());
         }
     }
 
-    @Test
-    public void givenMoodAnalyser_OnChangeMood_ShouldReturnHappy() {
-        try {
-            Object myObject = MoodAnalyserReflector.createMoodAnalyseWithParameter(" ");
-            MoodAnalyserReflector.setFieldValue(myObject, "message", "I am in Happy Mood");
-        } catch (MoodAnalysisException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void givenHappyMessage_WithDefaultConstructor_ShouldReturnHappy() {
-        Object myObject = null;
-        try {
-            myObject = MoodAnalyserReflector.createMoodAnalyse();
-            MoodAnalyserReflector.setFieldValue(myObject, "message", "I am in Happy Mood");
-            Object mood = MoodAnalyserReflector.invokeMethod(myObject, "analyseMood");
-            Assert.assertEquals("HAPPY", mood);
-        } catch (MoodAnalysisException e) {
-            e.printStackTrace();
-        }
-    }
 }
+
+
