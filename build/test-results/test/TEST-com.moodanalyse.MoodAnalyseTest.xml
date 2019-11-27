@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.moodanalyse.MoodAnalyseTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2019-11-27T11:43:45" hostname="admin1-desktop" time="0.006">
+<testsuite name="com.moodanalyse.MoodAnalyseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-27T12:06:19" hostname="admin1-desktop" time="0.002">
   <properties/>
-  <testcase name="givenMessage_WhenNotproperMethod_ShouldReturn_NoSuchMethod_WithParameters" classname="com.moodanalyse.MoodAnalyseTest" time="0.002"/>
-  <testcase name="givenMessage_CheckToObjectAreEqual" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_WhenNotproperClass_ShouldReturn_NoSuchClass_WithParameters" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_WhenNotproperClass_ShouldReturn_WithParameters" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_WhenNotproperMethod_ShouldReturn_WithParameters" classname="com.moodanalyse.MoodAnalyseTest" time="0.001"/>
-  <testcase name="givenMessage_CheckToObjectAreEqual_WithParameter_ReturnHappyMood" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_NullMood_WhenHappy_ShouldReturned" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_whenthemoodnull_InMoodAnalyseException_shouldReturnHappy" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_WhenSad_ShouldReturned" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="gitvenNullMoodShouldThrowException" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
-  <testcase name="givenMessage_WhenHappy_ShouldReturned" classname="com.moodanalyse.MoodAnalyseTest" time="0.0"/>
+  <testcase name="givenMoodAnalyser_OnChangeMood_ShouldReturnHappy" classname="com.moodanalyse.MoodAnalyseTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

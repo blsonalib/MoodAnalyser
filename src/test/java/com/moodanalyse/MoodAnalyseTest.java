@@ -120,6 +120,27 @@ public class MoodAnalyseTest {
             Assert.assertEquals("please enter the proper method name", e.getMessage());
         }
     }
+    @Test
+    public void givenMessage_withReflection_ShouldReturnHappy() {
+        Object myObject = null;
+        try {
+            myObject = MoodAnalyserReflector.createMoodAnalyseWithParameter1("I am in Happy Mood");
+            Object mood = MoodAnalyserReflector.invokeMethod(myObject, "analyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void givenMoodAnalyser_OnChangeMood_ShouldReturnHappy() {
+        try {
+            Object myObject = MoodAnalyserReflector.createMoodAnalyseWithParameter1(" ");
+            MoodAnalyserReflector.setFieldValue(myObject, "message", "I am in Happy Mood");
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
 
