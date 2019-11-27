@@ -20,7 +20,6 @@ public class MoodAnalyseTest
         {
             Assert.assertEquals("SAD", mood);
         }
-
     }
 
     @Test
@@ -80,15 +79,20 @@ public class MoodAnalyseTest
         }
     }
     @Test
-    public void givenMessage_CheckToObjectAreEqual()  {
-        MoodAnalyser moodAnalyser=null;
-        try {
-            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in a Happy");
-        } catch (MoodAnalysisException e) {
-
+    public void givenMessage_CheckToObjectAreEqual()
+    {
+        MoodAnalyser moodAnalyser = null;
+        boolean Result = false;
+        try
+        {
+            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse();
+            Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
         }
-        boolean Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
-        Assert.assertEquals(false,Result);
+        catch (MoodAnalysisException e)
+        {
+            Assert.assertEquals(false, Result);
+        }
+
     }
     @Test
     public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchClass_WithParameters()
@@ -96,7 +100,7 @@ public class MoodAnalyseTest
         MoodAnalyser moodAnalyser=null;
         try
         {
-            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in Happy Mood");
+            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse();
         }
         catch (MoodAnalysisException e)
         {
@@ -109,7 +113,7 @@ public class MoodAnalyseTest
         MoodAnalyser moodAnalyser=null;
         try
         {
-            moodAnalyser = MoodAnalyserFactory.createMoodAnalyse("I am in Happy Mood");
+            moodAnalyser = MoodAnalyserFactory.createMoodAnalyseWithParameter("I am in Happy Mood");
         }
         catch (MoodAnalysisException e)
         {
