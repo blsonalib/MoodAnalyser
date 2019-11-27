@@ -76,7 +76,7 @@ public class MoodAnalyseTest {
     public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchClass_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithInproperClass();
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithImproperClass();
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("Please enter the proper class name", e.getMessage());
         }
@@ -103,12 +103,21 @@ public class MoodAnalyseTest {
         }
     }
     @Test
-    public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchMethod_WithParameters() {
+    public void givenMessage_WhenNotproperClass_ShouldReturn_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
             moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameterWithImproperClassName("I am in a Happy");
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("please enter the proper class name", e.getMessage());
+        }
+    }
+    @Test
+    public void givenMessage_WhenNotproperMethod_ShouldReturn_WithParameters() {
+        MoodAnalyser moodAnalyser = null;
+        try {
+            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameterWithImproperMethodName("I am in a Happy");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals("please enter the proper method name", e.getMessage());
         }
     }
 
