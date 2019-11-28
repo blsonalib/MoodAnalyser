@@ -61,13 +61,14 @@ public class MoodAnalyseTest {
 
     @Test
     public void givenMessage_CheckToObjectAreEqual() {
-        MoodAnalyser moodAnalyser = null;
-        boolean Result = false;
+
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyse();
-            Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
-        } catch (MoodAnalysisException e) {
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
+           boolean Result = myObject.equals(new MoodAnalyser("I am in a Happy"));
             Assert.assertEquals(false, Result);
+        } catch (MoodAnalysisException e) {
+
         }
 
     }
@@ -76,7 +77,8 @@ public class MoodAnalyseTest {
     public void givenMessage_WhenNotproperClass_ShouldReturn_NoSuchClass_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithImproperClass();
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("Please enter the proper class name", e.getMessage());
         }
@@ -86,27 +88,29 @@ public class MoodAnalyseTest {
     public void givenMessage_WhenNotproperMethod_ShouldReturn_NoSuchMethod_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithImproperMethod();
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("please enter the proper method name", e.getMessage());
         }
     }
     @Test
     public void givenMessage_CheckToObjectAreEqual_WithParameter_ReturnHappyMood() {
-        MoodAnalyser moodAnalyser = null;
-        boolean Result = false;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameter("I am in a Happy");
-            Result = moodAnalyser.equals(new MoodAnalyser("I am in a Happy"));
-        } catch (MoodAnalysisException e) {
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor(String.class);
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor,"I am in a Happy");
+           boolean Result = myObject.equals(new MoodAnalyser());
             Assert.assertEquals(false, Result);
+        } catch (MoodAnalysisException e) {
+
         }
     }
     @Test
     public void givenMessage_WhenNotproperClass_ShouldReturn_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameterWithImproperClassName("I am in a Happy");
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("please enter the proper class name", e.getMessage());
         }
@@ -115,33 +119,57 @@ public class MoodAnalyseTest {
     public void givenMessage_WhenNotproperMethod_ShouldReturn_WithParameters() {
         MoodAnalyser moodAnalyser = null;
         try {
-            moodAnalyser = MoodAnalyserReflector.createMoodAnalyseWithParameterWithImproperMethodName("I am in a Happy");
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals("please enter the proper method name", e.getMessage());
         }
     }
     @Test
     public void givenMessage_withReflection_ShouldReturnHappy() {
-        Object myObject = null;
+
         try {
-            myObject = MoodAnalyserReflector.createMoodAnalyseWithParameter1("I am in Happy Mood");
+
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
             Object mood = MoodAnalyserReflector.invokeMethod(myObject, "analyseMood");
             Assert.assertEquals("HAPPY", mood);
         } catch (MoodAnalysisException e) {
-            e.printStackTrace();
+
         }
     }
     @Test
     public void givenMoodAnalyser_OnChangeMood_ShouldReturnHappy() {
         try {
-            Object myObject = MoodAnalyserReflector.createMoodAnalyseWithParameter1(" ");
+            Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+            Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);;
             MoodAnalyserReflector.setFieldValue(myObject, "message", "I am in Happy Mood");
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
     }
+   @Test
+    public void givenMoodAnalyserClass_WhenProper_ShouldReturnObject(){
+        try {
+           Constructor<?> constructor=MoodAnalyserReflector.getConstructor(String.class);
+          Object myObject = MoodAnalyserReflector.createMoodAnalyser(constructor,"I am in a Happy Mood");
+           Assert.assertEquals(new MoodAnalyser("I am in a Happy Mood"),myObject);
+       } catch (MoodAnalysisException e) {
 
+       }
+   }
+   @Test
+    public void givenHappyMessage_withDefaultConstructor_ShouldReturnHappy(){
+       try {
+           Constructor<?> constructor=MoodAnalyserReflector.getConstructor();
+           Object myObject=MoodAnalyserReflector.createMoodAnalyser(constructor);
+           MoodAnalyserReflector.setFieldValue(myObject,"message","I am in a Happy Mood");
+           Object mood=MoodAnalyserReflector.invokeMethod(myObject,"analyseMood");
+           Assert.assertEquals("HAPPY",mood);
+       } catch (MoodAnalysisException e) {
 
+       }
+   }
 }
 
 
